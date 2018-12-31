@@ -1,9 +1,11 @@
 {
-    "type": "project",
-    "license": "proprietary",
-    "require": {
-        "php": "^7.2"
-        //PHPStatus
-        //doctrine/collections
-    }
+  "name": "dawid-bednarz/php-user",
+  "description": "Base classes for flexible user logic",
+  "type": "lib",
+  "require": {
+    "php": "^7.2"
+  },
+  "psr-4": {
+    "DawBed\\PHPUser\\": "lib"
+  }
 }
