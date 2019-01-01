@@ -15,7 +15,6 @@ use DawBed\PHPUser\UserStatusInterface;
 abstract class BaseModel
 {
     protected $entity;
-    protected $password;
 
     function __construct(
         UserInterface $entity,
@@ -35,18 +34,4 @@ abstract class BaseModel
         return $this->entity;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password)
-    {
-        $this->password = $password;
-    }
-
-    public function hashPassword()
-    {
-        return password_hash($this->password, PASSWORD_ARGON2I);
-    }
 }
