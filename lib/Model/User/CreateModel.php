@@ -14,7 +14,7 @@ use DawBed\PHPUser\UserStatusInterface;
 class CreateModel extends BaseModel
 {
     protected $password;
-    protected $passwordAlgorithm;
+    protected $passwordModel;
 
     function __construct(UserInterface $entity,
                          UserStatusInterface $userStatus,
@@ -23,7 +23,7 @@ class CreateModel extends BaseModel
     )
     {
         parent::__construct($entity, $userStatus, $status);
-        $this->passwordAlgorithm = $passwordAlgorithm;
+        $this->passwordModel = new PasswordModel($passwordAlgorithm);
     }
 
     public function make(): UserInterface
@@ -46,6 +46,6 @@ class CreateModel extends BaseModel
 
     public function hashPassword()
     {
-        return password_hash($this->password, $this->passwordAlgorithm);
+        return $this->passwordModel->create($this->password);
     }
 }

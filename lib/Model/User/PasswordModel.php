@@ -9,9 +9,21 @@ namespace DawBed\PHPUser\Model\User;
 
 use DawBed\PHPUser\UserInterface;
 
-class PasswordValidatorModel
+class PasswordModel
 {
-    public function valid(UserInterface $user, string $password): bool
+    private $algorithm;
+
+    function __construct(string $algorithm)
+    {
+        $this->algorithm = $algorithm;
+    }
+
+    public function create(string $password): string
+    {
+        return password_hash($password, $this->algorithm);
+    }
+
+    public static function valid(UserInterface $user, string $password): bool
     {
         if (password_verify($password, $user->getPassword()) !== false) {
             return true;
