@@ -13,7 +13,7 @@ class PasswordModel
 {
     private $algorithm;
 
-    function __construct(string $algorithm)
+    function __construct(int $algorithm)
     {
         $this->algorithm = $algorithm;
     }

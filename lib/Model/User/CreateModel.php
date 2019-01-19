@@ -19,7 +19,7 @@ class CreateModel extends BaseModel
     function __construct(UserInterface $entity,
                          UserStatusInterface $userStatus,
                          ContextInterface $status,
-                         string $passwordAlgorithm
+                         int $passwordAlgorithm
     )
     {
         parent::__construct($entity, $userStatus, $status);
